@@ -1,6 +1,7 @@
 #include "terminal.h"
 
 #include <include/cdefs.h>
+#include <include/ioctls.h>
 #include <libc/gui/layout.h>
 #include <libc/gui/psf.h>
 #include <libc/math.h>
@@ -59,6 +60,7 @@ static void init_terminal_tab_dev(struct terminal_tab *tab)
 		dup2(fds, 2);
 
 		setsid();
+		ioctl(fds, TIOCSCTTY, 0);
 		execve("/bin/shell", NULL, NULL);
 	}
 	else
