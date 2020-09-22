@@ -29,8 +29,23 @@ mOS is the hobby operating system which is developed from scratch
 ### Get started
 
 ```
-$ brew install qemu nasm gdb i386-elf-gcc i386-elf-grub bochs e2fsprogs xorriso
-$ cd src && ./create_image.sh && ./build.sh qemu iso
+###. Building
+$ brew cask install virtualbox
+$ brew cask install vagrant
+$ vagrant up
+$ vagrant ssh
+$ cd /vagrant/src && ./create_image.sh && ./build.sh qemu iso
+```
+
+### If theres a qemu erorr /\
+```
+On vagrant machine
+$ exit
+Now on host
+$     sudo qemu-system-i386 -s -S -boot c -cdrom mos.iso -hda hdd.img \
+      -netdev tap,id=mnet0,ifname=tap0,script=./tapup.sh,downscript=./tapdown.sh -device rtl8139,netdev=mnet0,mac=52:55:00:d1:55:01 \
+      -serial stdio -serial file:logs/uart2.log -serial file:logs/uart3.log -serial file:logs/uart4.log \
+      -rtc driftfix=slew
 ```
 
 ✍🏻 If you get this error `hdiutil: attach failed - no mountable file systems`, installing might help [extFS for MAC](https://www.paragon-software.com/home/extfs-mac/)
