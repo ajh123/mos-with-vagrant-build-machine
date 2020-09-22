@@ -48,8 +48,6 @@ $     sudo qemu-system-i386 -s -S -boot c -cdrom mos.iso -hda hdd.img \
       -rtc driftfix=slew
 ```
 
-** Ignore ✍🏻 If you get this error `hdiutil: attach failed - no mountable file systems`, installing might help [extFS for MAC](https://www.paragon-software.com/home/extfs-mac/)
-
 **Debuging**
 
 in `build.sh`, adding `-s -S` right after `qemu` to switch to debug mode. Currently, I use vscode + [native debuge](https://marketplace.visualstudio.com/items?itemName=webfreak.debug) -> click Run -> choose "Attach to QEMU"
