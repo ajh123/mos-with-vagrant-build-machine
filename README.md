@@ -30,8 +30,8 @@ mOS is the hobby operating system which is developed from scratch
 
 ```
 ###. Building
-$ brew cask install virtualbox
-$ brew cask install vagrant
+$ brew cask install virtualbox # Only for first time
+$ brew cask install vagrant    # /\               /\
 $ vagrant up
 $ vagrant ssh
 $ cd /vagrant/src && ./create_image.sh && ./build.sh qemu iso
